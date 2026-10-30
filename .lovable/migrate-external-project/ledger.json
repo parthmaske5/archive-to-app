@@ -1,0 +1,10 @@
+[
+{"capability":"code","source":"codebase-revival-main.zip","outcome":"migrate","status":"verified","next_action":null},
+{"capability":"schema","source":"drizzle migrations 0000-0002","outcome":"migrate","status":"verified","next_action":null},
+{"capability":"storage buckets","source":"tutor-photos, tutor-documents","outcome":"migrate","status":"implemented","next_action":"Old file bytes not in archive; tutors re-upload"},
+{"capability":"records","source":"none attached","outcome":"migrate","status":"pending","next_action":"Request CSV/JSON exports of application tables"},
+{"capability":"auth identities","source":"previous Lovable Cloud","outcome":"migrate","status":"pending","next_action":"Request user export (emails, original IDs, roles)"},
+{"capability":"sign-in (email, Google, Lovable)","source":"Cloud auth","outcome":"migrate","status":"implemented","next_action":"Sign-up not exercised end-to-end"},
+{"capability":"payments (Razorpay membership)","source":"membership.functions.ts","outcome":"preserve","status":"implemented","next_action":"Needs RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, RAZORPAY_PLAN_ID secrets"},
+{"capability":"verification","source":"tests + preview","outcome":"migrate","status":"implemented","next_action":"32 tests pass; home, tutors, sign-in pages render"}
+]
