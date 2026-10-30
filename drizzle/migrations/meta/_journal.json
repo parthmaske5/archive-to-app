@@ -1,5 +1,27 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793389629724,
+      "tag": "0000_port_tutor_marketplace_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793389674622,
+      "tag": "0001_tutor_vetting_and_activity",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793391955068,
+      "tag": "0002_memberships",
+      "breakpoints": true
+    }
+  ]
 }

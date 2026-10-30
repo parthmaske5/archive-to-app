@@ -10,33 +10,286 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as FreelancersRouteImport } from './routes/freelancers'
+import { Route as MembershipRouteImport } from './routes/membership'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RefundRouteImport } from './routes/refund'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AuthIndexRouteImport } from './routes/auth.index'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
+import { Route as AuthStudentRouteImport } from './routes/auth.student'
+import { Route as AuthTeacherRouteImport } from './routes/auth.teacher'
+import { Route as TutorsIndexRouteImport } from './routes/tutors.index'
+import { Route as TutorsIdRouteImport } from './routes/tutors.$id'
+import { Route as AuthenticatedAccountAdminRouteImport } from './routes/_authenticated/account.admin'
+import { Route as AuthenticatedAccountStudentRouteImport } from './routes/_authenticated/account.student'
+import { Route as AuthenticatedAccountTeacherRouteImport } from './routes/_authenticated/account.teacher'
+import { Route as AuthenticatedAccountEnquiriesIdRouteImport } from './routes/_authenticated/account.enquiries.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreelancersRoute = FreelancersRouteImport.update({
+  id: '/freelancers',
+  path: '/freelancers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipRoute = MembershipRouteImport.update({
+  id: '/membership',
+  path: '/membership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundRoute = RefundRouteImport.update({
+  id: '/refund',
+  path: '/refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthIndexRoute = AuthIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthStudentRoute = AuthStudentRouteImport.update({
+  id: '/student',
+  path: '/student',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthTeacherRoute = AuthTeacherRouteImport.update({
+  id: '/teacher',
+  path: '/teacher',
+  getParentRoute: () => AuthRoute,
+} as any)
+const TutorsIndexRoute = TutorsIndexRouteImport.update({
+  id: '/tutors/',
+  path: '/tutors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TutorsIdRoute = TutorsIdRouteImport.update({
+  id: '/tutors/$id',
+  path: '/tutors/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAccountAdminRoute =
+  AuthenticatedAccountAdminRouteImport.update({
+    id: '/account/admin',
+    path: '/account/admin',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAccountStudentRoute =
+  AuthenticatedAccountStudentRouteImport.update({
+    id: '/account/student',
+    path: '/account/student',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAccountTeacherRoute =
+  AuthenticatedAccountTeacherRouteImport.update({
+    id: '/account/teacher',
+    path: '/account/teacher',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAccountEnquiriesIdRoute =
+  AuthenticatedAccountEnquiriesIdRouteImport.update({
+    id: '/account/enquiries/$id',
+    path: '/account/enquiries/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
+  '/freelancers': typeof FreelancersRoute
+  '/membership': typeof MembershipRoute
+  '/privacy': typeof PrivacyRoute
+  '/refund': typeof RefundRoute
+  '/terms': typeof TermsRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/student': typeof AuthStudentRoute
+  '/auth/teacher': typeof AuthTeacherRoute
+  '/tutors/$id': typeof TutorsIdRoute
+  '/auth/': typeof AuthIndexRoute
+  '/tutors/': typeof TutorsIndexRoute
+  '/account/admin': typeof AuthenticatedAccountAdminRoute
+  '/account/student': typeof AuthenticatedAccountStudentRoute
+  '/account/teacher': typeof AuthenticatedAccountTeacherRoute
+  '/account/enquiries/$id': typeof AuthenticatedAccountEnquiriesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
+  '/freelancers': typeof FreelancersRoute
+  '/membership': typeof MembershipRoute
+  '/privacy': typeof PrivacyRoute
+  '/refund': typeof RefundRoute
+  '/terms': typeof TermsRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/student': typeof AuthStudentRoute
+  '/auth/teacher': typeof AuthTeacherRoute
+  '/tutors/$id': typeof TutorsIdRoute
+  '/auth': typeof AuthIndexRoute
+  '/tutors': typeof TutorsIndexRoute
+  '/account/admin': typeof AuthenticatedAccountAdminRoute
+  '/account/student': typeof AuthenticatedAccountStudentRoute
+  '/account/teacher': typeof AuthenticatedAccountTeacherRoute
+  '/account/enquiries/$id': typeof AuthenticatedAccountEnquiriesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
+  '/freelancers': typeof FreelancersRoute
+  '/membership': typeof MembershipRoute
+  '/privacy': typeof PrivacyRoute
+  '/refund': typeof RefundRoute
+  '/terms': typeof TermsRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/student': typeof AuthStudentRoute
+  '/auth/teacher': typeof AuthTeacherRoute
+  '/tutors/$id': typeof TutorsIdRoute
+  '/auth/': typeof AuthIndexRoute
+  '/tutors/': typeof TutorsIndexRoute
+  '/_authenticated/account/admin': typeof AuthenticatedAccountAdminRoute
+  '/_authenticated/account/student': typeof AuthenticatedAccountStudentRoute
+  '/_authenticated/account/teacher': typeof AuthenticatedAccountTeacherRoute
+  '/_authenticated/account/enquiries/$id': typeof AuthenticatedAccountEnquiriesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/faqs'
+    | '/freelancers'
+    | '/membership'
+    | '/privacy'
+    | '/refund'
+    | '/terms'
+    | '/auth/callback'
+    | '/auth/student'
+    | '/auth/teacher'
+    | '/tutors/$id'
+    | '/auth/'
+    | '/tutors/'
+    | '/account/admin'
+    | '/account/student'
+    | '/account/teacher'
+    | '/account/enquiries/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faqs'
+    | '/freelancers'
+    | '/membership'
+    | '/privacy'
+    | '/refund'
+    | '/terms'
+    | '/auth/callback'
+    | '/auth/student'
+    | '/auth/teacher'
+    | '/tutors/$id'
+    | '/auth'
+    | '/tutors'
+    | '/account/admin'
+    | '/account/student'
+    | '/account/teacher'
+    | '/account/enquiries/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/faqs'
+    | '/freelancers'
+    | '/membership'
+    | '/privacy'
+    | '/refund'
+    | '/terms'
+    | '/auth/callback'
+    | '/auth/student'
+    | '/auth/teacher'
+    | '/tutors/$id'
+    | '/auth/'
+    | '/tutors/'
+    | '/_authenticated/account/admin'
+    | '/_authenticated/account/student'
+    | '/_authenticated/account/teacher'
+    | '/_authenticated/account/enquiries/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  FaqsRoute: typeof FaqsRoute
+  FreelancersRoute: typeof FreelancersRoute
+  MembershipRoute: typeof MembershipRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RefundRoute: typeof RefundRoute
+  TermsRoute: typeof TermsRoute
+  TutorsIdRoute: typeof TutorsIdRoute
+  TutorsIndexRoute: typeof TutorsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +301,196 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/freelancers': {
+      id: '/freelancers'
+      path: '/freelancers'
+      fullPath: '/freelancers'
+      preLoaderRoute: typeof FreelancersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership': {
+      id: '/membership'
+      path: '/membership'
+      fullPath: '/membership'
+      preLoaderRoute: typeof MembershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund': {
+      id: '/refund'
+      path: '/refund'
+      fullPath: '/refund'
+      preLoaderRoute: typeof RefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/': {
+      id: '/auth/'
+      path: '/'
+      fullPath: '/auth/'
+      preLoaderRoute: typeof AuthIndexRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/auth/student': {
+      id: '/auth/student'
+      path: '/student'
+      fullPath: '/auth/student'
+      preLoaderRoute: typeof AuthStudentRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/auth/teacher': {
+      id: '/auth/teacher'
+      path: '/teacher'
+      fullPath: '/auth/teacher'
+      preLoaderRoute: typeof AuthTeacherRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/tutors/': {
+      id: '/tutors/'
+      path: '/tutors'
+      fullPath: '/tutors/'
+      preLoaderRoute: typeof TutorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tutors/$id': {
+      id: '/tutors/$id'
+      path: '/tutors/$id'
+      fullPath: '/tutors/$id'
+      preLoaderRoute: typeof TutorsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/account/admin': {
+      id: '/_authenticated/account/admin'
+      path: '/account/admin'
+      fullPath: '/account/admin'
+      preLoaderRoute: typeof AuthenticatedAccountAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/account/student': {
+      id: '/_authenticated/account/student'
+      path: '/account/student'
+      fullPath: '/account/student'
+      preLoaderRoute: typeof AuthenticatedAccountStudentRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/account/teacher': {
+      id: '/_authenticated/account/teacher'
+      path: '/account/teacher'
+      fullPath: '/account/teacher'
+      preLoaderRoute: typeof AuthenticatedAccountTeacherRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/account/enquiries/$id': {
+      id: '/_authenticated/account/enquiries/$id'
+      path: '/account/enquiries/$id'
+      fullPath: '/account/enquiries/$id'
+      preLoaderRoute: typeof AuthenticatedAccountEnquiriesIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAccountAdminRoute: typeof AuthenticatedAccountAdminRoute
+  AuthenticatedAccountStudentRoute: typeof AuthenticatedAccountStudentRoute
+  AuthenticatedAccountTeacherRoute: typeof AuthenticatedAccountTeacherRoute
+  AuthenticatedAccountEnquiriesIdRoute: typeof AuthenticatedAccountEnquiriesIdRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAccountAdminRoute: AuthenticatedAccountAdminRoute,
+  AuthenticatedAccountStudentRoute: AuthenticatedAccountStudentRoute,
+  AuthenticatedAccountTeacherRoute: AuthenticatedAccountTeacherRoute,
+  AuthenticatedAccountEnquiriesIdRoute: AuthenticatedAccountEnquiriesIdRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface AuthRouteChildren {
+  AuthCallbackRoute: typeof AuthCallbackRoute
+  AuthStudentRoute: typeof AuthStudentRoute
+  AuthTeacherRoute: typeof AuthTeacherRoute
+  AuthIndexRoute: typeof AuthIndexRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthCallbackRoute: AuthCallbackRoute,
+  AuthStudentRoute: AuthStudentRoute,
+  AuthTeacherRoute: AuthTeacherRoute,
+  AuthIndexRoute: AuthIndexRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
+  AuthRoute: AuthRouteWithChildren,
+  ContactRoute: ContactRoute,
+  FaqsRoute: FaqsRoute,
+  FreelancersRoute: FreelancersRoute,
+  MembershipRoute: MembershipRoute,
+  PrivacyRoute: PrivacyRoute,
+  RefundRoute: RefundRoute,
+  TermsRoute: TermsRoute,
+  TutorsIdRoute: TutorsIdRoute,
+  TutorsIndexRoute: TutorsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
