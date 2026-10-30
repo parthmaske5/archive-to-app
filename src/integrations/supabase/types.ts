@@ -14,16 +14,403 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      enquiry_messages: {
+        Row: {
+          body: string
+          created_at: string
+          enquiry_id: string
+          id: string
+          sender_role: string
+          sender_user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          enquiry_id: string
+          id?: string
+          sender_role: string
+          sender_user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          enquiry_id?: string
+          id?: string
+          sender_role?: string
+          sender_user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enquiry_messages_enquiry_id_fkey"
+            columns: ["enquiry_id"]
+            isOneToOne: false
+            referencedRelation: "tutor_enquiries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      enquiry_reads: {
+        Row: {
+          enquiry_id: string
+          last_read_at: string
+          user_id: string
+        }
+        Insert: {
+          enquiry_id: string
+          last_read_at?: string
+          user_id: string
+        }
+        Update: {
+          enquiry_id?: string
+          last_read_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enquiry_reads_enquiry_id_fkey"
+            columns: ["enquiry_id"]
+            isOneToOne: false
+            referencedRelation: "tutor_enquiries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memberships: {
+        Row: {
+          access_until: string | null
+          created_at: string
+          email: string | null
+          id: string
+          razorpay_payment_id: string | null
+          razorpay_subscription_id: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          access_until?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          razorpay_payment_id?: string | null
+          razorpay_subscription_id: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          access_until?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          razorpay_payment_id?: string | null
+          razorpay_subscription_id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      student_profiles: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          education_level: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          education_level?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          education_level?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "student_profiles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teacher_documents: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_path: string
+          id: string
+          kind: string
+          teacher_profile_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_path: string
+          id?: string
+          kind: string
+          teacher_profile_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          id?: string
+          kind?: string
+          teacher_profile_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teacher_documents_teacher_profile_id_fkey"
+            columns: ["teacher_profile_id"]
+            isOneToOne: false
+            referencedRelation: "teacher_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teacher_profiles: {
+        Row: {
+          achievements: Json
+          availability: Json
+          bio: string | null
+          completed_at: string | null
+          created_at: string
+          curricula: string[]
+          fee_per_hour: number | null
+          hidden_at: string | null
+          id: string
+          languages: string[]
+          last_active_at: string | null
+          last_checkin_at: string | null
+          levels: string[]
+          location: string | null
+          paused_at: string | null
+          photo_url: string | null
+          qualification: string | null
+          qualifications: Json
+          reactivated_at: string | null
+          skills: string[]
+          status: string
+          subjects: string[]
+          tagline: string | null
+          teaching_mode: string | null
+          updated_at: string
+          user_id: string
+          years_experience: number | null
+        }
+        Insert: {
+          achievements?: Json
+          availability?: Json
+          bio?: string | null
+          completed_at?: string | null
+          created_at?: string
+          curricula?: string[]
+          fee_per_hour?: number | null
+          hidden_at?: string | null
+          id?: string
+          languages?: string[]
+          last_active_at?: string | null
+          last_checkin_at?: string | null
+          levels?: string[]
+          location?: string | null
+          paused_at?: string | null
+          photo_url?: string | null
+          qualification?: string | null
+          qualifications?: Json
+          reactivated_at?: string | null
+          skills?: string[]
+          status?: string
+          subjects?: string[]
+          tagline?: string | null
+          teaching_mode?: string | null
+          updated_at?: string
+          user_id: string
+          years_experience?: number | null
+        }
+        Update: {
+          achievements?: Json
+          availability?: Json
+          bio?: string | null
+          completed_at?: string | null
+          created_at?: string
+          curricula?: string[]
+          fee_per_hour?: number | null
+          hidden_at?: string | null
+          id?: string
+          languages?: string[]
+          last_active_at?: string | null
+          last_checkin_at?: string | null
+          levels?: string[]
+          location?: string | null
+          paused_at?: string | null
+          photo_url?: string | null
+          qualification?: string | null
+          qualifications?: Json
+          reactivated_at?: string | null
+          skills?: string[]
+          status?: string
+          subjects?: string[]
+          tagline?: string | null
+          teaching_mode?: string | null
+          updated_at?: string
+          user_id?: string
+          years_experience?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teacher_profiles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tutor_enquiries: {
+        Row: {
+          created_at: string
+          education_level: string
+          id: string
+          last_message_at: string
+          last_sender_role: string
+          message: string | null
+          status: string
+          student_user_id: string | null
+          subject: string
+          teacher_profile_id: string
+          tutor_replied_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          education_level: string
+          id?: string
+          last_message_at?: string
+          last_sender_role?: string
+          message?: string | null
+          status?: string
+          student_user_id?: string | null
+          subject: string
+          teacher_profile_id: string
+          tutor_replied_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          education_level?: string
+          id?: string
+          last_message_at?: string
+          last_sender_role?: string
+          message?: string | null
+          status?: string
+          student_user_id?: string | null
+          subject?: string
+          teacher_profile_id?: string
+          tutor_replied_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tutor_enquiries_teacher_profile_id_fkey"
+            columns: ["teacher_profile_id"]
+            isOneToOne: false
+            referencedRelation: "teacher_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      can_access_enquiry: { Args: { _enquiry_id: string }; Returns: boolean }
+      enquiry_role: { Args: { _enquiry_id: string }; Returns: string }
+      has_enquired_teacher: {
+        Args: { _teacher_profile: string }
+        Returns: boolean
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      hide_unresponsive_tutors: { Args: never; Returns: number }
+      is_enquiring_student: { Args: { _student: string }; Returns: boolean }
+      reactivate_my_listing: { Args: never; Returns: undefined }
+      teacher_heartbeat: { Args: never; Returns: undefined }
+      teacher_is_listed: { Args: { _id: string }; Returns: boolean }
+      teacher_listing_complete: {
+        Args: { _t: Database["public"]["Tables"]["teacher_profiles"]["Row"] }
+        Returns: boolean
+      }
+      tutor_activity: {
+        Args: { _ids: string[] }
+        Returns: {
+          avg_reply_minutes: number
+          last_active_at: string
+          replies: number
+          teacher_profile_id: string
+        }[]
+      }
+      tutor_checkin: { Args: { _available: boolean }; Returns: undefined }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "student" | "teacher"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +537,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "student", "teacher"],
+    },
   },
 } as const
