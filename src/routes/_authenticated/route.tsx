@@ -5,8 +5,9 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
   beforeLoad: async ({ location }) => {
-    const { data } = await supabase.auth.getUser();
-    if (!data.user) {
+    // Local session read (no network round trip); data access is still enforced by RLS.
+    const { data } = await supabase.auth.getSession();
+    if (!data.session) {
       throw redirect({ to: "/auth", search: { redirect: location.href } });
     }
   },
