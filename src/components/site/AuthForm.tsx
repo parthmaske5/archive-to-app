@@ -63,7 +63,7 @@ export function AuthForm({ role, initialMode = "signin" }: { role: AppRole; init
           setStage("check-email");
           return;
         }
-        if (data.user) await ensureRoleProfile(data.user.id, role);
+        // The sign-up database trigger already created the role + profile from signup_role.
         navigate({ to: meta.area });
       } else {
         const { data, error: err } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
