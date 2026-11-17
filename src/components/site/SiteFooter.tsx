@@ -29,6 +29,7 @@ export function SiteFooter() {
           <h4 className="font-bold">Marketplace</h4>
           <ul className="mt-4 space-y-2 text-muted-foreground">
             {navLinks.slice(1).map((l) => <li key={l.label}><a href={l.href} className="hover:text-primary">{l.label}</a></li>)}
+            <li><a href="/demonstration/electriccurrentdemo" className="hover:text-primary">Physics Demo</a></li>
           </ul>
         </div>
         <div>

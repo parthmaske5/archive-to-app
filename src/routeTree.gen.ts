@@ -24,6 +24,7 @@ import { Route as AuthIndexRouteImport } from './routes/auth.index'
 import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
 import { Route as AuthStudentRouteImport } from './routes/auth.student'
 import { Route as AuthTeacherRouteImport } from './routes/auth.teacher'
+import { Route as DemonstrationElectriccurrentdemoRouteImport } from './routes/demonstration.electriccurrentdemo'
 import { Route as TutorsIndexRouteImport } from './routes/tutors.index'
 import { Route as TutorsIdRouteImport } from './routes/tutors.$id'
 import { Route as AuthenticatedAccountAdminRouteImport } from './routes/_authenticated/account.admin'
@@ -105,6 +106,12 @@ const AuthTeacherRoute = AuthTeacherRouteImport.update({
   path: '/teacher',
   getParentRoute: () => AuthRoute,
 } as any)
+const DemonstrationElectriccurrentdemoRoute =
+  DemonstrationElectriccurrentdemoRouteImport.update({
+    id: '/demonstration/electriccurrentdemo',
+    path: '/demonstration/electriccurrentdemo',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TutorsIndexRoute = TutorsIndexRouteImport.update({
   id: '/tutors/',
   path: '/tutors/',
@@ -154,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/auth/callback': typeof AuthCallbackRoute
   '/auth/student': typeof AuthStudentRoute
   '/auth/teacher': typeof AuthTeacherRoute
+  '/demonstration/electriccurrentdemo': typeof DemonstrationElectriccurrentdemoRoute
   '/tutors/$id': typeof TutorsIdRoute
   '/auth/': typeof AuthIndexRoute
   '/tutors/': typeof TutorsIndexRoute
@@ -175,6 +183,7 @@ export interface FileRoutesByTo {
   '/auth/callback': typeof AuthCallbackRoute
   '/auth/student': typeof AuthStudentRoute
   '/auth/teacher': typeof AuthTeacherRoute
+  '/demonstration/electriccurrentdemo': typeof DemonstrationElectriccurrentdemoRoute
   '/tutors/$id': typeof TutorsIdRoute
   '/auth': typeof AuthIndexRoute
   '/tutors': typeof TutorsIndexRoute
@@ -199,6 +208,7 @@ export interface FileRoutesById {
   '/auth/callback': typeof AuthCallbackRoute
   '/auth/student': typeof AuthStudentRoute
   '/auth/teacher': typeof AuthTeacherRoute
+  '/demonstration/electriccurrentdemo': typeof DemonstrationElectriccurrentdemoRoute
   '/tutors/$id': typeof TutorsIdRoute
   '/auth/': typeof AuthIndexRoute
   '/tutors/': typeof TutorsIndexRoute
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/auth/callback'
     | '/auth/student'
     | '/auth/teacher'
+    | '/demonstration/electriccurrentdemo'
     | '/tutors/$id'
     | '/auth/'
     | '/tutors/'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/auth/callback'
     | '/auth/student'
     | '/auth/teacher'
+    | '/demonstration/electriccurrentdemo'
     | '/tutors/$id'
     | '/auth'
     | '/tutors'
@@ -267,6 +279,7 @@ export interface FileRouteTypes {
     | '/auth/callback'
     | '/auth/student'
     | '/auth/teacher'
+    | '/demonstration/electriccurrentdemo'
     | '/tutors/$id'
     | '/auth/'
     | '/tutors/'
@@ -288,6 +301,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   RefundRoute: typeof RefundRoute
   TermsRoute: typeof TermsRoute
+  DemonstrationElectriccurrentdemoRoute: typeof DemonstrationElectriccurrentdemoRoute
   TutorsIdRoute: typeof TutorsIdRoute
   TutorsIndexRoute: typeof TutorsIndexRoute
 }
@@ -399,6 +413,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthTeacherRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/demonstration/electriccurrentdemo': {
+      id: '/demonstration/electriccurrentdemo'
+      path: '/demonstration/electriccurrentdemo'
+      fullPath: '/demonstration/electriccurrentdemo'
+      preLoaderRoute: typeof DemonstrationElectriccurrentdemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tutors/': {
       id: '/tutors/'
       path: '/tutors'
@@ -489,6 +510,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   RefundRoute: RefundRoute,
   TermsRoute: TermsRoute,
+  DemonstrationElectriccurrentdemoRoute: DemonstrationElectriccurrentdemoRoute,
   TutorsIdRoute: TutorsIdRoute,
   TutorsIndexRoute: TutorsIndexRoute,
 }
